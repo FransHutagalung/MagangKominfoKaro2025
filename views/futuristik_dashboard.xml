@@ -7,9 +7,12 @@
             <form string="Dashboard Magang" create="false" delete="false">
                 <sheet>
                     <!-- Header with Logo and Title -->
-                    <div class="row mb-4 align-items-center" style="background: linear-gradient(135deg, #6c5ce7, #4834d4); border-radius: 12px; padding: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
-                        <div class="col-md-2 text-center">
-                            <img src="/magang_kominfo_2025/static/description/karo.png" alt="Logo Kominfo" style="max-width: 120px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));"/>
+                    <div class="row mb-4 align-items-center" style="background: linear-gradient(135deg, #6c5ce7, #4834d4); border-radius: 12px; padding: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
+                        <div class="col-md-1 text-center">
+                            <img src="/magang_kominfo_2025/static/description/karo.png" alt="Logo Kominfo" style="width: 80px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));"/>
+                        </div>
+                        <div class="col-md-1 text-center">
+                            <img src="/magang_kominfo_2025/static/description/kominfokaro.png" alt="Logo Kominfo" style="width: 80px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));"/>
                         </div>
                         <div class="col-md-10">
                             <div class="oe_title text-white">
