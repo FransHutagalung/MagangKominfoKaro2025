@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action untuk Dashboard -->
+    <record id="action_magang_dashboard" model="ir.actions.client">
+        <field name="name">Dashboard Magang</field>
+        <field name="tag">magang_dashboard</field>
+    </record>
+</odoo>

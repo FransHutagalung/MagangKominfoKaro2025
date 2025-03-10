@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_magang_root" name="Magang" sequence="10"/>
+
+    <menuitem id="menu_magang_record_menu" name="Magang Komifo" parent="menu_magang_root" sequence="10"/>
+
+    <menuitem id="menu_magang" name="Data Magang" parent="menu_magang_record_menu" action="magang_record_action" sequence="10"/>
+
+    <menuitem id="menu_magang_progress" name="Progres Magang" parent="menu_magang_record_menu" action="action_magang_progress" sequence="20"/>
+
+  
+
+
+</odoo>

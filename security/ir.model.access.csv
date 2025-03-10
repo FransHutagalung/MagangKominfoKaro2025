@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_magang_record_user,magang.record.user,model_magang_record,base.group_user,1,1,1,1
+access_magang_progress_user,magang.progress.user,model_magang_progress,base.group_user,1,1,1,1
+access_magang_dashboard_user,magang.dashboard.user,model_magang_dashboard,base.group_user,1,1,1,0

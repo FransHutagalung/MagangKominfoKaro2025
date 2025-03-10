@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_magang_dashboard_form" model="ir.ui.view">
+        <field name="name">magang.dashboard.form</field>
+        <field name="model">magang.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard Magang" create="false" delete="false">
+                <sheet>
+                    <!-- Header with Logo and Title -->
+                    <div class="row mb-4 align-items-center" style="background: linear-gradient(135deg, #6c5ce7, #4834d4); border-radius: 12px; padding: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
+                        <div class="col-md-2 text-center">
+                            <img src="/magang_kominfo_2025/static/description/karo.png" alt="Logo Kominfo" style="max-width: 120px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));"/>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="oe_title text-white">
+                                <h1 style="font-size: 2.3em; margin-top: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Dashboard Magang Kominfo Kabupaten Karo 2025</h1>
+                                <h3 style="opacity: 0.9;">Monitoring dan Evaluasi Peserta Magang</h3>
+                                <p style="font-size: 12px; opacity: 0.8; margin-top: 5px;">Data dashboard diperbarui secara otomatis saat halaman dibuka</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Main Content Area - 9 columns -->
+                        <div class="col-md-9">
+                            <!-- Statistik Peserta Magang -->
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h3 style="font-weight: 600; color: #333; margin-bottom: 15px; border-left: 4px solid #6c5ce7; padding-left: 10px;">Statistik Peserta Magang</h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #345eeb, #4b73ea); box-shadow: 0 10px 20px rgba(52, 94, 235, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="total_magang"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Total Peserta</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-users fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #28a745, #20c997); box-shadow: 0 10px 20px rgba(40, 167, 69, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="active_magang"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Magang Aktif</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-user-check fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #17a2b8, #0dcaf0); box-shadow: 0 10px 20px rgba(23, 162, 184, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="completed_magang"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Magang Selesai</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-circle-check fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #dc3545, #ff4d5a); box-shadow: 0 10px 20px rgba(220, 53, 69, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="canceled_magang"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Magang Dibatalkan</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-user-times fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Statistik Laporan Progres -->
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h3 style="font-weight: 600; color: #333; margin-bottom: 15px; border-left: 4px solid #6c5ce7; padding-left: 10px;">Statistik Laporan Progres</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #4834d4, #5f50e2); box-shadow: 0 10px 20px rgba(72, 52, 212, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="total_progress"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Total Laporan</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-clipboard-list fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #2ecc71, #4cd486); box-shadow: 0 10px 20px rgba(46, 204, 113, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="approved_progress"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Laporan Disetujui</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-clipboard-check fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #f39c12, #f8b631); box-shadow: 0 10px 20px rgba(243, 156, 18, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="pending_progress"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Menunggu Persetujuan</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-clock fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Statistik per Divisi -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 style="font-weight: 600; color: #333; margin-bottom: 15px; border-left: 4px solid #6c5ce7; padding-left: 10px;">Statistik per Divisi</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #3498db, #45aaf2); box-shadow: 0 10px 20px rgba(52, 152, 219, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="programmer_count"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Programmer</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-code fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #16a085, #1abc9c); box-shadow: 0 10px 20px rgba(22, 160, 133, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="designer_count"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Designer</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-paint-brush fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-3 mb-3" style="border-radius: 15px; background: linear-gradient(135deg, #9b59b6, #a87cd7); box-shadow: 0 10px 20px rgba(155, 89, 182, 0.15); border: none; transition: transform 0.3s;">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.8rem; color: white; font-weight: 700;" class="mb-1">
+                                                    <field name="humas_count"/>
+                                                </h3>
+                                                <div style="color: rgba(255,255,255,0.9); font-weight: 500;">Humas</div>
+                                            </div>
+                                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                <i class="fa fa-comments fa-2x" style="color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Sidebar - 3 columns -->
+                        <div class="col-md-3">
+                            <!-- Menu Cepat - Vertical Layout -->
+                            <div class="card mb-4" style="border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.075); border: none;">
+                                <div class="card-header py-3" style="background: linear-gradient(135deg, #6c5ce7, #4834d4); border-radius: 15px 15px 0 0; border: none;">
+                                    <h6 class="m-0 font-weight-bold text-white">Menu Cepat</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex flex-column">
+                                        <a type="action" name="%(magang_kominfo_2025.magang_record_action)d" class="btn mb-3" style="background: linear-gradient(135deg, #345eeb, #4b73ea); color: white; padding: 15px; text-align: left; border-radius: 10px; box-shadow: 0 4px 10px rgba(52, 94, 235, 0.15); transition: all 0.3s; font-weight: 500; border: none;">
+                                          Peserta Magang
+                                        </a>
+                                        <a type="action" name="%(magang_kominfo_2025.action_magang_progress)d" class="btn mb-3" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 15px; text-align: left; border-radius: 10px; box-shadow: 0 4px 10px rgba(40, 167, 69, 0.15); transition: all 0.3s; font-weight: 500; border: none;">
+                                            <i class="fa fa-clipboard-list mr-2"></i> Laporan Progres
+                                        </a>
+                                        <a type="action" name="%(magang_kominfo_2025.action_progress_kalendar)d" class="btn mb-3" style="background: linear-gradient(135deg, #f39c12, #f8b631); color: white; padding: 15px; text-align: left; border-radius: 10px; box-shadow: 0 4px 10px rgba(243, 156, 18, 0.15); transition: all 0.3s; font-weight: 500; border: none;">
+                                            <i class="fa fa-calendar-check mr-2"></i> Kalender Progres
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Info Card -->
+                            <div class="card" style="border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.075); border: none; background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                                <div class="card-body">
+                                    <h6 class="font-weight-bold" style="color: #333;">Info Sistem</h6>
+                                    <p style="font-size: 14px; color: #555;">
+                                        Dashboard ini secara otomatis memperbarui data saat dibuka. Sistem akan menampilkan informasi terbaru tentang peserta magang dan laporan progres magang 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

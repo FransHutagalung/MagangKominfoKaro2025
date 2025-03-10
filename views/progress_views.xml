@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View untuk Progress Magang -->
+    <record id="view_magang_progress_form" model="ir.ui.view">
+        <field name="name">magang.progress.form</field>
+        <field name="model">magang.progress</field>
+        <field name="arch" type="xml">
+            <form string="Progres Magang">
+                <header>
+                    <button name="action_submit" string="Ajukan" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_approve" string="Setujui" type="object" class="oe_highlight" invisible="state != 'submitted'" groups="base.group_user"/>
+                    <button name="action_reject" string="Tolak" type="object" class="btn-danger" invisible="state != 'submitted'" groups="base.group_user"/>
+                    <button name="action_reset_to_draft" string="Kembalikan ke Draft" type="object" invisible="state not in ('submitted', 'rejected')" groups="base.group_user"/>
+                    <button name="action_view_map" type="object" string="Lihat Lokasi" 
+                            class="btn btn-info" icon="fa-map-marker"
+                            invisible="not map_url"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,rejected"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Judul Progres"/>
+                        </h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <group>
+                                <group>
+                                    <field name="magang_id" options="{'no_create': True}"/>
+                                    <field name="peserta_name" readonly="1"/>
+                                    <field name="peserta_divisi" readonly="1"/>
+                                    <field name="date"/>
+                                </group>
+                                <group>
+                                    <field name="location" placeholder="Contoh: Gedung Kominfo Lt.2"/>
+                                    <field name="map_url" placeholder="https://www.google.com/maps/embed?pb=..."/>
+                                    <field name="approved_by" invisible="approved_by == False"/>
+                                    <field name="approval_date" invisible="approval_date == False"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Deskripsi Kegiatan">
+                                    <field name="description" placeholder="Jelaskan progres atau kegiatan yang telah dilakukan..."/>
+                                </page>
+                                <page string="Catatan Pembimbing" invisible="state == 'draft'">
+                                    <field name="approval_notes" placeholder="Catatan dari pembimbing..."/>
+                                </page>
+                                <page string="Lokasi Kegiatan" invisible="not map_url">
+                                    <div class="alert alert-info" role="alert">
+                                        <i class="fa fa-info-circle"></i> Klik tombol "Lihat Lokasi" di atas untuk melihat peta.
+                                    </div>
+                                </page>
+                            </notebook>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card shadow-sm rounded border">
+                                <div class="card-header bg-light">
+                                    <h5 class="card-title mb-0">
+                                        <i class="fa fa-paperclip"/>
+                                        Lampiran
+                                    </h5>
+                                </div>
+                                <div class="card-body text-center py-4">
+                                    <field name="attachment" widget="image" class="img-fluid mb-3" filename="attachment_filename" options="{'preview_image': 'attachment', 'size': [300, 300]}"/>
+                                    <div class="d-flex justify-content-center gap-2" invisible="attachment == False">
+                                        <button name="action_download_attachment" string="Download" type="object" class="btn btn-sm btn-primary" icon="fa-download"/>
+                                        <button name="action_view_attachment" string="Lihat" type="object" class="btn btn-sm btn-secondary" icon="fa-eye"/>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white" invisible="attachment">
+                                    <field name="attachment_filename" invisible="1"/>
+                                    <div class="alert alert-info mb-0">
+                                        <i class="fa fa-info-circle"/>
+                                        Unggah lampiran untuk dokumentasi kegiatan
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View untuk Progress Magang -->
+    <record id="view_magang_progress_tree" model="ir.ui.view">
+        <field name="name">magang.progress.tree</field>
+        <field name="model">magang.progress</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'draft'" decoration-warning="state == 'submitted'" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="peserta_name"/>
+                <field name="peserta_divisi"/>
+                <field name="location"/>
+                <field name="magang_id"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-warning="state == 'submitted'" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Kanban View untuk Progress Magang -->
+    <record id="view_magang_progress_kanban" model="ir.ui.view">
+        <field name="name">magang.progress.kanban</field>
+        <field name="model">magang.progress</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="peserta_name"/>
+                <field name="peserta_divisi"/>
+                <field name="location"/>
+                <field name="map_url"/>
+                <field name="magang_id"/>
+                <field name="state"/>
+                <field name="attachment"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click shadow-sm rounded-2 position-relative overflow-hidden" 
+                             t-attf-style="border-left: 5px solid #{record.state.raw_value == 'draft' ? '#17a2b8' : record.state.raw_value == 'submitted' ? '#ffc107' : record.state.raw_value == 'approved' ? '#28a745' : '#dc3545'};">
+                            <div class="oe_kanban_content p-3">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1 pe-2">
+                                        <div>
+                                            <strong class="h5 d-block text-truncate" style="max-width: 180px;">
+                                                <field name="name"/>
+                                            </strong>
+                                        </div>
+                                        <div class="text-muted small mb-1">
+                                            <i class="fa fa-user me-1"></i>
+                                            <field name="peserta_name"/>
+                                            <span t-if="record.peserta_divisi.raw_value" class="badge bg-info ms-2">
+                                                <field name="peserta_divisi"/>
+                                            </span>
+                                        </div>
+                                        <div t-if="record.location.raw_value" class="text-muted small mb-1">
+                                            <i class="fa fa-map-marker text-danger me-1"></i>
+                                            <field name="location"/>
+                                        </div>
+                                        <div class="text-muted small">
+                                            <i class="fa fa-calendar me-1"></i>
+                                            <field name="date"/>
+                                        </div>
+                                    </div>
+                                    <div t-if="record.attachment.value" class="ms-auto" style="width: 60px; height: 60px;">
+                                        <field name="attachment" widget="image" options="{'size': [60, 60], 'preview_image': 'attachment'}" 
+                                            class="img-fluid rounded shadow-sm" style="width: 100%; height: 100%; object-fit: cover;"/>
+                                    </div>
+                                    <div t-else="" class="ms-auto d-flex align-items-center justify-content-center rounded bg-light" style="width: 60px; height: 60px;">
+                                        <i class="fa fa-file-text-o text-muted fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <span t-attf-class="badge #{record.state.raw_value == 'draft' ? 'bg-info' : record.state.raw_value == 'submitted' ? 'bg-warning' : record.state.raw_value == 'approved' ? 'bg-success' : 'bg-danger'}">
+                                            <i t-attf-class="fa #{record.state.raw_value == 'draft' ? 'fa-pencil' : record.state.raw_value == 'submitted' ? 'fa-clock-o' : record.state.raw_value == 'approved' ? 'fa-check' : 'fa-times'} me-1"></i>
+                                            <field name="state"/>
+                                        </span>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right" t-if="record.map_url.raw_value">
+                                        <button name="action_view_map" type="object" class="btn btn-sm btn-link text-primary">
+                                            <i class="fa fa-map-marker me-1"></i> Lihat Map
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View untuk Progress Magang -->
+    <record id="view_magang_progress_search" model="ir.ui.view">
+        <field name="name">magang.progress.search</field>
+        <field name="model">magang.progress</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="peserta_name"/>
+                <field name="peserta_divisi"/>
+                <field name="location"/>
+                <field name="magang_id"/>
+                <field name="description"/>
+                <filter name="my_progress" string="Progres Saya" domain="[('magang_id.name', '=', uid)]"/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="submitted" string="Diajukan" domain="[('state', '=', 'submitted')]"/>
+                <filter name="approved" string="Disetujui" domain="[('state', '=', 'approved')]"/>
+                <filter name="rejected" string="Ditolak" domain="[('state', '=', 'rejected')]"/>
+                <separator/>
+                <filter name="has_location" string="Dengan Lokasi" domain="[('location', '!=', False)]"/>
+                <filter name="has_map" string="Dengan Map" domain="[('map_url', '!=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_peserta" string="Peserta" domain="[]" context="{'group_by': 'peserta_name'}"/>
+                    <filter name="group_by_divisi" string="Divisi" domain="[]" context="{'group_by': 'peserta_divisi'}"/>
+                    <filter name="group_by_state" string="Status" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_by_date" string="Tanggal" domain="[]" context="{'group_by': 'date'}"/>
+                    <filter name="group_by_location" string="Lokasi" domain="[]" context="{'group_by': 'location'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Calendar View untuk Progress Magang -->
+    <record id="view_magang_progress_calendar" model="ir.ui.view">
+        <field name="name">magang.progress.calendar</field>
+        <field name="model">magang.progress</field>
+        <field name="arch" type="xml">
+            <calendar string="Kalender Progres" date_start="date" color="state" mode="month">
+                <field name="name"/>
+                <field name="peserta_name"/>
+                <field name="location"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Action untuk Progress Magang -->
+    <record id="action_magang_progress" model="ir.actions.act_window">
+        <field name="name">Progres Magang</field>
+        <field name="res_model">magang.progress</field>
+        <field name="view_mode">tree,kanban,form,calendar</field>
+        <field name="search_view_id" ref="view_magang_progress_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Buat progres magang baru
+            </p>
+            <p>
+                Progres magang digunakan untuk mencatat aktivitas dan kemajuan peserta magang selama masa magang.
+            </p>
+        </field>
+    </record>
+</odoo>

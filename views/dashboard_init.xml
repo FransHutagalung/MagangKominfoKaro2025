@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Debug info -->
+    <function model="magang.record" name="search_count" eval="[[]]"/>
+    <function model="magang.progress" name="search_count" eval="[[]]"/>
+    
+    <!-- Force create 1 dashboard record -->
+    <function model="magang.dashboard" name="get_dashboard"/>
+</odoo>

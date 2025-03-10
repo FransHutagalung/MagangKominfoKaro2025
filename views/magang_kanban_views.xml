@@ -1,0 +1,106 @@
+<record id="view_magang_kanban" model="ir.ui.view">
+    <field name="name">magang.kanban.view</field>
+    <field name="model">magang.record</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_mobile" default_group_by="status">
+            <field name="id"/>
+            <field name="name"/>
+            <field name="email"/>
+            <field name="phone"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="status"/>
+            <field name="image"/>
+            <field name="image_small"/>
+            <field name="progress_count"/>
+            <field name="last_progress_date"/>
+            <field name="notes"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_card oe_kanban_global_click o_kanban_record_has_image_fill shadow rounded-3 position-relative overflow-hidden" 
+                        t-attf-style="border-top: 5px solid #{record.status.raw_value == 'ongoing' ? '#28a745' : record.status.raw_value == 'completed' ? '#ffc107' : '#dc3545'};">
+                        
+                        <!-- Status Badge in Corner -->
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span t-attf-class="badge rounded-pill #{record.status.raw_value == 'ongoing' ? 'bg-success' : record.status.raw_value == 'completed' ? 'bg-warning' : 'bg-danger'} px-3 py-2 shadow-sm">
+                                <i t-attf-class="fa #{record.status.raw_value == 'ongoing' ? 'fa-play-circle' : record.status.raw_value == 'completed' ? 'fa-check-circle' : 'fa-times-circle'} me-1"></i>
+                                <field name="status"/>
+                            </span>
+                        </div>
+                        
+                        <div class="d-flex p-2">
+                            <!-- Profile Image -->
+                            <div class="me-3">
+                                <div class="rounded-circle overflow-hidden border shadow-sm" style="width: 80px; height: 80px;">
+                                    <img t-att-src="kanban_image('magang.record', 'image', record.id.raw_value)" alt="Profile" class="w-100 h-100 object-fit-cover"/>
+                                </div>
+                                
+                                <!-- Progress Indicator -->
+                                <div class="text-center mt-2">
+                                    <div class="d-inline-block position-relative">
+                                        <span t-attf-class="badge bg-primary rounded-pill position-relative">
+                                            <i class="fa fa-tasks me-1"></i>
+                                            <field name="progress_count"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Main Content -->
+                            <div class="flex-grow-1">
+                                <!-- Name -->
+                                <h5 class="mb-1 mt-1">
+                                    <field name="name" class="fw-bold text-dark"/>
+                                </h5>
+                                
+                                <!-- Contact Info -->
+                                <div class="mb-2">
+                                    <div t-if="record.email.raw_value" class="text-secondary small mb-1">
+                                        <i class="fa fa-envelope text-muted me-1"></i>
+                                        <field name="email"/>
+                                    </div>
+                                    <div t-if="record.phone.raw_value" class="text-secondary small">
+                                        <i class="fa fa-phone text-muted me-1"></i>
+                                        <field name="phone"/>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dates -->
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div t-if="record.start_date.raw_value" class="small">
+                                        <i class="fa fa-calendar-plus-o text-success me-1"></i>
+                                        <field name="start_date"/>
+                                    </div>
+                                    <div t-if="record.end_date.raw_value" class="small">
+                                        <i class="fa fa-calendar-check-o text-danger me-1"></i>
+                                        <field name="end_date"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom Panel with Last Progress -->
+                        <div t-if="record.last_progress_date.raw_value" class="bg-light p-2 small border-top">
+                            <div class="d-flex align-items-center">
+                                <i class="fa fa-clock-o text-muted me-1"></i>
+                                <span class="text-muted">Terakhir: </span>
+                                <span class="ms-1 text-primary"><field name="last_progress_date"/></span>
+                            </div>
+                        </div>
+                        
+                     
+                        <style>
+                            .oe_kanban_card {
+                                transition: all 0.3s ease;
+                            }
+                            .oe_kanban_card:hover {
+                                transform: translateY(-5px);
+                                box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+                            }
+                        </style>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>

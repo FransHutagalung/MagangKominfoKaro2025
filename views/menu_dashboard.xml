@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Dashboard Menu dengan action ID baru -->
+    <menuitem id="menu_magang_dashboard"
+              name="Dashboard"
+              parent="menu_magang_root"
+              action="action_magang_dashboard_form"
+              sequence="5"/>
+</odoo>

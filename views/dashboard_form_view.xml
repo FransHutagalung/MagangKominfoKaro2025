@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_magang_dashboard_form" model="ir.ui.view">
+        <field name="name">magang.dashboard.form</field>
+        <field name="model">magang.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard Magang" create="false" delete="false">
+
+                <sheet>
+                    <div class="row mt14 mb32">
+                        <div class="col-md-2 text-center">
+                            <img src="/magang_kominfo_2025/static/description/karo.png" alt="Logo Kominfo" style="max-width: 130px;"/>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="oe_title">
+                                <h1 style="font-size: 2.5em; margin-top: 14px;">Dashboard Magang Kominfo Kabupaten Karo 2025</h1>
+                                <h3 class="text-muted">Monitoring dan Evaluasi Peserta Magang</h3>
+                                <p class="text-warning text-muted " style="fontSize: 10px;">Tekan Tombol Refresh Dashboard untuk fetch data</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <!-- Main Content Area - 9 columns -->
+                        <div class="col-md-9">
+                            <!-- Statistik Peserta Magang -->
+                            <div class="row mt14">
+                                <div class="col-md-12">
+                                    <h3>Statistik Peserta Magang</h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-primary text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.2rem;" class="text-lg text-white">
+                                                    <field name="total_magang"/>
+                                                </h3>
+                                                <div>Total Peserta</div>
+                                            </div>
+                                            <div class="col-md-3 p-2">
+                                                <i class="fa fa-users fa-2x me-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-success text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.2rem;" class="text-lg text-white">
+                                                    <field name="active_magang"/>
+                                                </h3>
+                                                <div>Magang Aktif</div>
+                                            </div>
+                                            <div class="col-md-3 p-2">
+                                                <i class="fa-solid fa-user-check fa-2x me-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-info text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.2rem;" class="text-lg text-white">
+                                                    <field name="completed_magang"/>
+                                                </h3>
+                                                <div>Magang Selesai</div>
+                                            </div>
+                                            <div class="col-md-3 p-2">
+                                                <i class="fa-solid fa-circle-check fa-2x me-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-danger text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 style="font-size: 1.2rem;" class="text-lg text-white">
+                                                    <field name="canceled_magang"/>
+                                                </h3>
+                                                <div>Magang Dibatalkan</div>
+                                            </div>
+                                            <div class="col-md-3 p-2">
+                                                <i class="fa fa-user-times fa-2x me-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Statistik Laporan Progres -->
+                            <div class="row mt14">
+                                <div class="col-md-12">
+                                    <h3>Statistik Laporan Progres</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-primary text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3  style="font-size: 1.2rem;"
+                                                class="text-lg text-white">
+
+                                                    <field name="total_progress"/>
+                                                </h3>
+                                                <div>Total Laporan</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <i class="fa fa-clipboard-list fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-success text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3  style="font-size: 1.2rem;"
+                                                class="text-lg text-white">
+                                                    <field name="approved_progress"/>
+                                                </h3>
+                                                <div>Laporan Disetujui</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <i class="fa fa-clipboard-check fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-warning text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3  style="font-size: 1.2rem;"
+                                                class="text-lg text-white">
+                                                    <field name="pending_progress"/>
+                                                </h3>
+                                                <div>Menunggu Persetujuan</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <i class="fa fa-clock fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Statistik per Divisi -->
+                            <div class="row mt14">
+                                <div class="col-md-12">
+                                    <h3>Statistik per Divisi</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-primary text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3  style="font-size: 1.2rem;"
+                                                class="text-lg text-white">
+                                                    <field name="programmer_count"/>
+                                                </h3>
+                                                <div>Programmer</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <i class="fa fa-code fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-success text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3  style="font-size: 1.2rem;"
+                                                class="text-lg text-white">
+                                                    <field name="designer_count"/>
+                                                </h3>
+                                                <div>Designer</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <i class="fa fa-paint-brush fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-info text-white p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3  style="font-size: 1.2rem;"
+                                                class="text-lg text-white">
+                                                    <field name="humas_count"/>
+                                                </h3>
+                                                <div>Humas</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <i class="fa fa-comments fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Sidebar - 3 columns -->
+                        <div class="col-md-3">
+                            <!-- Menu Cepat - Vertical Layout -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Menu Cepat</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex flex-column">    
+                                        <a type="action" name="%(magang_kominfo_2025.magang_record_action)d" class="btn btn-primary btn-block mb-3" style="padding: 15px; text-align: left;">
+                                            <!-- <i class="fa fa-user-plus mr-4"></i>  -->
+                                            Peserta Magang
+                                        </a>
+                                        <a type="action" name="%(magang_kominfo_2025.action_magang_progress)d" class="btn btn-success btn-block mb-3" style="padding: 15px; text-align: left;">
+                                            <i class="fa fa-clipboard-list mr-4"></i> Laporan Progres
+                                        </a>
+                                        <a type="action" name="%(magang_kominfo_2025.action_progress_kalendar)d" class="btn btn-warning btn-block mb-3" style="padding: 15px; text-align: left;">
+                                            <i class="fa fa-calendar-check mr-4"></i> Kalender Progres
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

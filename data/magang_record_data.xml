@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="magang_record_adhi" model="magang.record">
+            <field name="name">Adhi Hutagalung</field>
+            <field name="email">adhihutagalung@gmail.com</field>
+            <field name="phone">087796162643</field>
+            <field name="status">ongoing</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="notes">Baiklah</field>
+            <field name="divisi">programmer</field>
+            <field name="image" type="base64" file="magang_kominfo_2025/static/img/adhi.jpg"/>
+        </record>
+
+        <record id="magang_record_romeo" model="magang.record">
+            <field name="name">Romeo Aldy Suranta Bangun</field>
+            <field name="email">romeo@gmail.com</field>
+            <field name="phone">089283928392</field>
+            <field name="status">ongoing</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="notes">Romeo Tinggal di Tigapanah</field>
+            <field name="divisi">programmer</field>
+             <field name="image" type="base64" file="magang_kominfo_2025/static/img/romeo.jpg"/>
+        </record>
+
+        <record id="magang_record_npc1" model="magang.record">
+            <field name="name">NPC 1</field>
+            <field name="email">npc1@gmail.com</field>
+            <field name="phone">08981989182</field>
+            <field name="status">canceled</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="notes">NPC 1</field>
+            <field name="divisi">designer</field>
+             <field name="image" type="base64" file="magang_kominfo_2025/static/img/npc1.jpg"/>
+        </record>
+
+        <record id="magang_record_yedija" model="magang.record">
+            <field name="name">Yedija Surbakti</field>
+            <field name="email">yedija@gmail.com</field>
+            <field name="phone">984384038</field>
+            <field name="status">completed</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="notes">Yedija Berada Divisi Humas</field>
+            <field name="divisi">humas</field>
+             <field name="image" type="base64" file="magang_kominfo_2025/static/img/yedija.jpg"/>
+        </record>
+
+        <record id="magang_record_habelsius" model="magang.record">
+            <field name="name">Habelsius Sianturi</field>
+            <field name="email">habelsius@gmail.com</field>
+            <field name="phone">038403804</field>
+            <field name="status">ongoing</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="notes">Baiklah Habel</field>
+            <field name="divisi">designer</field>
+             <field name="image" type="base64" file="magang_kominfo_2025/static/img/habel.jpg"/>
+        </record>
+
+        <record id="magang_record_npc3" model="magang.record">
+            <field name="name">NPC 3</field>
+            <field name="email">npc3@gmail.com</field>
+            <field name="phone">040384038</field>
+            <field name="status">completed</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="divisi">programmer</field>
+
+             <field name="image" type="base64" file="magang_kominfo_2025/static/img/npc3.jpg"/>
+        </record>
+
+        <record id="magang_record_npc2" model="magang.record">
+            <field name="name">NPC 2</field>
+            <field name="email">npc2@gmail.com</field>
+            <field name="phone">088302830</field>
+            <field name="status">canceled</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="divisi">programmer</field>
+             <field name="image" type="base64" file="magang_kominfo_2025/static/img/npc2.jpg"/>
+        </record>
+
+        <record id="magang_record_febrian" model="magang.record">
+            <field name="name">Febrian Valentino Sembiring</field>
+            <field name="email">febrian@gmail.com</field>
+            <field name="phone">083028328</field>
+            <field name="status">completed</field>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-07</field>
+            <field name="notes">Divisi Jaringan</field>
+            <field name="divisi">humas</field>
+             <field name="image" type="base64" file="magang_kominfo_2025/static/img/febrian.jpg"/>
+        </record>
+    </data>
+</odoo>
